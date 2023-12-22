@@ -1,0 +1,22 @@
+{
+  "name": "norris",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fabiodigiacomopepe/node-norris.git"
+  },
+  "author": "Fabio",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fabiodigiacomopepe/node-norris/issues"
+  },
+  "homepage": "https://github.com/fabiodigiacomopepe/node-norris#readme",
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}
