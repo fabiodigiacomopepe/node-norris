@@ -18,17 +18,19 @@ const server = http.createServer(function (req, res) {
                 }
                 // Altrimenti converto il JSON in array (se non esiste lo creo)
                 const jokes = JSON.parse(jsonToString || '[]');
-                jokes.push(data.value);     // Pusho battuta dentro array
-                // Scrivo su file norrisDb.json utlizzando codifica UTF-8 e riconvertendo battute in json
-                fs.writeFile('norrisDb.json', JSON.stringify(jokes), 'utf8', (err) => {
-                    if (err) {
-                        // Se ci sono errori, li riporto in console e mi fermo
-                        console.log("Impossibile scrivere su file:", err);
-                        return;
-                    }
-                    // Altrimenti loggo messaggio di successo
-                    console.log("Salvato!");
-                });
+                if (!jokes.find(joke => joke === data.value)) {
+                    jokes.push(data.value);     // Pusho battuta dentro array
+                    // Scrivo su file norrisDb.json utlizzando codifica UTF-8 e riconvertendo battute in json
+                    fs.writeFile('norrisDb.json', JSON.stringify(jokes), 'utf8', (err) => {
+                        if (err) {
+                            // Se ci sono errori, li riporto in console e mi fermo
+                            console.log("Impossibile scrivere su file:", err);
+                            return;
+                        }
+                        // Altrimenti loggo messaggio di successo
+                        console.log("Salvato!");
+                    });
+                }
                 // Valorizzo battuta a stringa vuota
                 let joke = "";
                 // Per ogni battuta salvata in array creo un li e metto battuta all'interno
